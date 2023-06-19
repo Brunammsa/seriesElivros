@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\LivrosController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -65,5 +67,14 @@ Route::middleware('auth')->group(function () {
         Route::delete('/series/destroy/{serie}', 'destroy')->whereNumber('series')->name('series.destroy');
         Route::get('series/edit/{serie}', 'edit')->name('series.edit');
         Route::put('series/update/{serie}', 'update')->name('series.update');
+    });
+
+    Route::controller(LivrosController::class)->group(function () {
+        Route::get('/livros', 'index')->name('livros.index');
+        Route::get('/livros/create', 'create')->name('livros.create');
+        Route::post('/livros/store', 'store')->name('livros.store');
+        Route::delete('/livros/destroy/{serie}', 'destroy')->whereNumber('livros')->name('livros.destroy');
+        Route::get('livros/edit/{serie}', 'edit')->name('livros.edit');
+        Route::put('livros/update/{serie}', 'update')->name('livros.update');
     });
 });
