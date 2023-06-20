@@ -1,8 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Meus livros') }}
-        </h2>
+
     </x-slot>    
 
     <div class="py-12">
@@ -22,7 +20,7 @@
                             @foreach ($livros as $livro)
                             <li class="list-group-item d-flex justify-content-between">
                                 {{ $livro->nome }}
-                                <span class="d-flex align-items-center">
+                                <div class="d-flex align-items-center">
                                     <a href="{{route('livros.edit', $livro->id)}}" class="btn btn-sm">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
                                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -35,7 +33,7 @@
                                         @method('DELETE')
                                         <button type="button" class="btn-close" aria-label="Close"></button>
                                     </form>
-                                </span>
+                                </div>
                             </li>
                             @endforeach
                         </ul>
