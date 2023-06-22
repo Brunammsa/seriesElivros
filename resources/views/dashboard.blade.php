@@ -1,20 +1,29 @@
 <x-app-layout>
     <x-slot name="header"></x-slot>
 
-    <div class="container d-flex justify-content-center">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
+    <div class="container text-center">
+        <div class="card row row-cols-auto justify-content-md-center">
+            <div class="card-body col-6">
                 <h5 class="card-title">Meus livros</h5>
                 <p class="card-text mt-3 mb-5">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="{{route("livros.index")}}" class="card-link">Card link</a>
+                <a href="{{route("livros.index")}}" class="card-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40">
+                        <path d="M479.231-185.386q-48.385-35.693-104-55.154Q319.615-260.001 260-260.001q-36.615 0-71.922 8.115-35.308 8.115-68.077 23.884-21.384 9.846-40.692-2.923-19.307-12.77-19.307-36.154v-433.535q0-12.923 6.846-23.885 6.846-10.962 19-15.962 40.615-19.769 84.653-29.653 44.038-9.885 89.499-9.885 58.385 0 113.692 16.539Q429-746.921 480-716.921v470.203q50.615-32.667 106.808-48.103Q643-310.256 700-310.256q34.461 0 69.038 5.384 34.577 5.385 69.166 20.718 4.231 1.154 7.886.064 3.654-1.09 3.654-6.218v-461.537q7.849 2.484 15.283 5.601 7.434 3.117 14.51 7.322 9.821 5.41 15.141 14.893 5.321 9.483 5.321 20.338v435.842q0 23.385-19.885 35.962-19.885 12.577-42.423 3.116-32.385-15.385-67.115-23.308-34.73-7.922-70.576-7.922-60 0-116.385 18.884-56.384 18.884-104.384 55.731Zm71.025-158.511v-346.871l229.231-229.231v373.64L550.256-343.897Zm-120.511 72.385v-415.051q-38.282-20.924-83.129-32.052Q301.77-729.744 260-729.744q-41.872 0-77.782 8.295t-64.653 20.881q-3.078 1.154-5.193 3.269-2.116 2.116-2.116 5.193v402.516q0 5.385 3.654 6.346 3.655.962 7.886-.577 29.615-12.589 64.012-19.512 34.397-6.923 74.525-6.923 48.975 0 92.463 10.961 43.488 10.962 76.949 27.783Zm0 0v-415.051 415.051Z"/>
+                    </svg>
+                </a>
+
             </div>
         </div>
 
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
+        <div class="card row row-cols-auto justify-content-md-center">
+            <div class="card-body col-6">
                 <h5 class="card-title">Minhas séries</h5>
                 <p class="card-text mt-3 mb-5">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="{{route("series.index")}}" class="card-link">Card link</a>
+                <a href="{{route("series.index")}}" class="card-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40">
+                        <path d="M344.873-140.001v-80H162.565q-25.788 0-44.176-18.388t-18.388-44.176v-474.87q0-25.788 18.388-44.176t44.176-18.388h634.87q25.788 0 44.176 18.388t18.388 44.176v474.87q0 25.788-18.388 44.176t-44.176 18.388H615.127v80H344.873ZM162.565-270.256h634.87q4.616 0 8.462-3.847 3.847-3.846 3.847-8.462v-474.87q0-4.616-3.847-8.462-3.846-3.847-8.462-3.847h-634.87q-4.616 0-8.462 3.847-3.847 3.846-3.847 8.462v474.87q0 4.616 3.847 8.462 3.846 3.847 8.462 3.847Zm-12.309 0v-499.488 499.488Z"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </div>
