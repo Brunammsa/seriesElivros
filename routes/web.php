@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\LivrosController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SeriesController;
 use Illuminate\Support\Facades\Route;
 
 /*
