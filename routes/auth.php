@@ -64,7 +64,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/series', 'index')->name('series.index');
         Route::get('/series/create', 'create')->name('series.create');
         Route::post('/series/store', 'store')->name('series.store');
-        Route::delete('/series/destroy/{serie}', 'destroy')->whereNumber('series')->name('series.destroy');
+        Route::delete('/series/destroy/{serie}', 'destroy')->whereNumber('serie')->name('series.destroy');
         Route::get('series/edit/{serie}', 'edit')->name('series.edit');
         Route::put('series/update/{serie}', 'update')->name('series.update');
     });
@@ -73,8 +73,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/livros', 'index')->name('livros.index');
         Route::get('/livros/create', 'create')->name('livros.create');
         Route::post('/livros/store', 'store')->name('livros.store');
-        Route::delete('/livros/destroy/{serie}', 'destroy')->whereNumber('livros')->name('livros.destroy');
-        Route::get('livros/edit/{serie}', 'edit')->name('livros.edit');
-        Route::put('livros/update/{serie}', 'update')->name('livros.update');
+        Route::delete('/livros/destroy/{livro}', 'destroy')->whereNumber('livro')->name('livros.destroy');
+        Route::get('livros/edit/{livro}', 'edit')->name('livros.edit');
+        Route::put('livros/update/{livro}', 'update')->name('livros.update');
     });
 });

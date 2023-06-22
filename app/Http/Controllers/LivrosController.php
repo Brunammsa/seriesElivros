@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LivrosFormRequest;
 use App\Models\Livro;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -23,12 +24,8 @@ class LivrosController extends Controller
         return view('livros.create');
     }
 
-    public function store(Request $request)
+    public function store(LivrosFormRequest $request)
     {
-        $request->validate([
-            'nome' => ['required', 'min:3']
-        ]);
-
         $livro = Livro::create($request->only(['nome']));
 
         return to_route('livros.index')
@@ -41,7 +38,7 @@ class LivrosController extends Controller
             ->with('livro', $livro);
     }
 
-    public function update(Livro $livro, Request $request)
+    public function update(Livro $livro, LivrosFormRequest $request)
     {
         $livro->fill($request->all());
         $livro->save();
