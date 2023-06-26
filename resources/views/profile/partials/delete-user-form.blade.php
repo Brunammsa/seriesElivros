@@ -3,10 +3,6 @@
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Deletar conta') }}
         </h2>
-
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Depois que sua conta for excluída, todos os seus recursos e dados serão excluídos permanentemente. Digite sua senha para confirmar que deseja excluir permanentemente sua conta.') }}
-        </p>
     </header>
 
     <form action="{{route("profile.destroy")}}" method="POST">
@@ -43,20 +39,25 @@
                 <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
             </div>
 
-            <form action="{{route("profile.destroy")}}" method="POST">
-            @csrf
-            @method('DELETE')
-
             <div class="mt-6 flex justify-end">
-                <x-secondary-button>
-                    {{ __('Cancelar') }}
-                </x-secondary-button>
 
-                <x-danger-button class="ml-3">
-                    {{ __('Deletar conta') }}
-                </x-danger-button>
+                <a href="{{route("dashboard")}}">
+                    <x-secondary-button>
+                        {{ __('Cancelar') }}
+                    </x-secondary-button>
+                </a>
+
+                <form action="{{route("profile.destroy")}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+
+                    <x-danger-button class="ml-3">
+                        {{ __('Deletar conta') }}
+                    </x-danger-button>
+                </form>
+            
             </div>
-            </form>
+
         </form>
     </x-modal>
 </section>

@@ -2,20 +2,28 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <div class="container d-flex justify-content-center">
+
+
+    <div style="margin-left: 46em; margin-top: 15em">
+        <div class="mb-4" style="margin-left: 10em">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48">
+                <path d="M489-120v-60h291v-600H489v-60h291q24 0 42 18t18 42v600q0 24-18 42t-42 18H489Zm-78-185-43-43 102-102H120v-60h348L366-612l43-43 176 176-174 174Z"/>
+            </svg>
+        </div>
+
         <div class="mb-3 col-6">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
         
                 <!-- Email Address -->
-                <div class="mb-3 col-7">
+                <div class="mb-3 col-8">
                     <x-input-label for="email" :value="__('E-mail')" />
                     <x-text-input id="email" class="form-control block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
         
                 <!-- Password -->
-                <div class="mt-4 col-7">
+                <div class="mt-4 col-8  ">
                     <x-input-label for="password" :value="__('Senha')" />
         
                     <x-text-input id="password" class="form-control block mt-1 w-full"
@@ -33,32 +41,36 @@
                         <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Lembre-me') }}</span>
                     </label>
                 </div>
-        
-                <div class="container">
-                    <div class="d-flex justify-space-around">
-                        <div class="mt-4 px-5">
-                            @if (Route::has('password.request'))
-                                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                                    {{ __('Esqueceu sua senha?') }}
-                                </a>
-                            @endif
-                
-                            @if (Route::has('register'))
-                                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
-                                    {{ __('Ainda não possue registro?') }}
-                                </a>
-                            @endif  
     
-                            <x-primary-button>
-                                {{ __('Entrar') }}
-                            </x-primary-button>
-                        </div>
+                <div class="d-flex align-items-center mt-4">
+                    <div>
+                        @if (Route::has('password.request'))
+                            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ route('password.request') }}">
+                                {{ __('Esqueceu sua senha?') }}
+                            </a>
+                        @endif
                     </div>
+
+                    <div style="margin: 1em">
+                        @if (Route::has('register'))
+                            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ route('register') }}">
+                                {{ __('Registrar-me') }}
+                            </a>
+                        @endif  
+                    </div>
+
+                    <div>
+                        <x-primary-button>
+                            {{ __('Entrar') }}
+                        </x-primary-button>
+                    </div>
+
                 </div>
 
             </form>
         </div>
     </div>
+        
     
     
 </x-guest-layout>

@@ -47,11 +47,13 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu text-small" style="">
-                            <li><a class="dropdown-item" href="{{route("profile.edit")}}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{route("profile.edit")}}">Perfil</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="{{route("logout")}}">Sign out</a></li>
+                            <li>
+                                <a class="dropdown-item" href="{{route("logout")}}">Sair</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
