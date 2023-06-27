@@ -46,7 +46,7 @@
                         {{ __('Já possui registro?') }}
                     </a>
                     
-                    <a href="{{route("/")}}">
+                    <a href="{{route("register")}}">
                         <x-primary-button class="ml-4" >
                             {{ __('Registrar') }}
                         </x-primary-button>

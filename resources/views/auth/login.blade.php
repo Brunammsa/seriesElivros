@@ -45,7 +45,7 @@
                 <div class="d-flex align-items-center mt-4">
                     <div>
                         @if (Route::has('password.request'))
-                            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ route('password.request') }}">
+                            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ route("password.request") }}">
                                 {{ __('Esqueceu sua senha?') }}
                             </a>
                         @endif
@@ -60,9 +60,11 @@
                     </div>
 
                     <div>
-                        <x-primary-button>
-                            {{ __('Entrar') }}
-                        </x-primary-button>
+                        <a href="dashboard">
+                            <x-primary-button>
+                                {{ __('Entrar') }}
+                            </x-primary-button>
+                        </a>
                     </div>
 
                 </div>
