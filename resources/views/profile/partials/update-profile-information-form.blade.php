@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __("Aqui você pode atualizar seu nome e e-mail") }}
+            {{ __("Aqui você pode atualizar seu name e e-mail") }}
         </p>
     </header>
 
@@ -18,7 +18,7 @@
         @method('patch')
 
         <div class="mb-3 col-6">
-            <x-input-label for="name" :value="__('Nome')" />
+            <x-input-label for="name" :value="__('name')" />
             <x-text-input id="name" name="name" type="text" class="form-control mt-3 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
