@@ -1,11 +1,19 @@
 <x-app-layout>
 
-    <div class="container mt-5">
+    <div class="container">
         <div class="row">
             <div class="col-12">
-                <label class="mb-5">Editando livro '{{ $livro->nome }}'</label>
-                <x-form :action="route( 'livros.update', $livro->id )" :nome="$livro->nome" :update="true"/>
+                <div class="container">
+                    <h2 class="d-flex justify-content-center" style="background-color: #deeab6e7; color:#025464;">
+                        <label>Editando livro '{!! $livro->name !!}'</label>
+                    </h2>
+                </div>
             </div>
+
+            <x-form :action="route( 'livros.update', $livro->id )" 
+                :name="$livro->name" 
+                :update="true"/>
+
         </div>
     </div>
 

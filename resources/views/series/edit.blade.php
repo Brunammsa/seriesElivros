@@ -1,11 +1,17 @@
 <x-app-layout>
-    
-    <div class="container mt-5">
+
+    <div class="container">
         <div class="row">
             <div class="col-12">
-                <label class="mb-5">Editando série '{{ $serie->nome }}'</label>
-                <x-form :action="route('series.update', $serie->id)" :nome="$serie->nome" :update="true"/>
+                <h2 class="d-flex justify-content-center" style="background-color: #deeab6e7; color:#025464;">
+                    <label>Editando série '{!! $serie->name !!}'</label>
+                </h2>
             </div>
+
+            <x-form :action="route('series.update', $serie->id)" 
+                :name="$serie->name" 
+                :update="true"/>
+
         </div>
     </div>
 
