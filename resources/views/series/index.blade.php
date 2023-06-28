@@ -19,7 +19,7 @@
                     <ul class="list-group list-group-flush mt-3">
                         @foreach ($series as $serie)
                         <li class="list-group-item d-flex justify-content-between">
-                            {{ $serie->nome }}
+                            {{ $serie->name }}
                             
                             <div class="d-flex align-items-center">
                                 <a href="{{route('series.edit', $serie->id)}}" class="btn btn-sm">

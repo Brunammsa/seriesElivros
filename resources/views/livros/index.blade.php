@@ -19,7 +19,7 @@
                     <ul class="list-group list-group-flush mt-3">
                         @foreach ($livros as $livro)
                         <li class="list-group-item d-flex justify-content-between">
-                            {{ $livro->nome }}
+                            {{ $livro->name }}
                             <div class="d-flex align-items-center">
                                 <a href="{{route('livros.edit', $livro->id)}}" class="btn btn-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">

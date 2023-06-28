@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LivrosFormRequest;
 use App\Models\Livro;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class LivrosController extends Controller
 {
     public function index(): View
     {
-        $livros = Livro::query()->orderBy('nome')->get();
+        $livros = Livro::query()->orderBy('name')->get();
         $successMessage = session('success.message');
 
         return view('livros.index')
@@ -26,10 +25,10 @@ class LivrosController extends Controller
 
     public function store(LivrosFormRequest $request)
     {
-        $livro = Livro::create($request->only(['nome']));
+        $livro = Livro::create($request->only(['name']));
 
         return to_route('livros.index')
-            ->with('success.message', "O livro '{$livro->nome}' foi adicionado com sucesso");
+            ->with('success.message', "O livro '{$livro->name}' foi adicionado com sucesso");
     }
 
     public function edit(Livro $livro): View
@@ -44,7 +43,7 @@ class LivrosController extends Controller
         $livro->save();
 
         return to_route('livros.index')
-            ->with('success.message', "O livro '{$livro->nome}' foi editado com sucesso");
+            ->with('success.message', "O livro '{$livro->name}' foi editado com sucesso");
     }
 
     public function destroy(Livro $livro)
@@ -52,6 +51,6 @@ class LivrosController extends Controller
         $livro->delete();
         
         return to_route('livros.index')
-            ->with('success.message', "O livro '{$livro->nome}' foi removido com sucesso");
+            ->with('success.message', "O livro '{$livro->name}' foi removido com sucesso");
     }
 }

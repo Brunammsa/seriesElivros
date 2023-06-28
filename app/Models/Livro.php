@@ -9,5 +9,5 @@ class Livro extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome'];
+    protected $fillable = ['name'];
 }

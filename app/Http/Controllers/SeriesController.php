@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Serie;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
     public function index(): View
     {
-        $series = Serie::query()->orderBy('nome')->get();
+        $series = Serie::query()->orderBy('name')->get();
         $successMessage = session('success.message');
 
         return view('series.index')
@@ -26,10 +25,10 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request)
     {
-        $serie = Serie::create($request->only(['nome']));
+        $serie = Serie::create($request->only(['name']));
 
         return to_route('series.index')
-            ->with('success.message', "A série '{$serie->nome}' foi adicionada com sucesso");
+            ->with('success.message', "A série '{$serie->name}' foi adicionada com sucesso");
     }
 
     public function destroy(Serie $serie)
@@ -37,7 +36,7 @@ class SeriesController extends Controller
         $serie->delete();
 
         return to_route('series.index')
-            ->with('success.message', "A série '{$serie->nome}' foi removida com sucesso");
+            ->with('success.message', "A série '{$serie->name}' foi removida com sucesso");
     }
 
     public function edit(Serie $serie): view
@@ -52,6 +51,6 @@ class SeriesController extends Controller
         $serie->save();
 
         return to_route('series.index')
-            ->with('success.message', "A série '{$serie->nome}' foi editada com sucesso");
+            ->with('success.message', "A série '{$serie->name}' foi editada com sucesso");
     }
 }
