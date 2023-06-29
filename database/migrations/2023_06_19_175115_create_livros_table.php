@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('livros', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
+            $table->boolean('watched')->default(false);
             $table->timestamps();
         });
     }
