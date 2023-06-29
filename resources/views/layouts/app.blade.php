@@ -46,14 +46,15 @@
                     </a>
     
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li>
-                            <a href="{{route("dashboard")}}" class="nav-link px-2"  style="color: #FFF5E4;">Minha coleção</a>
-                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: #FFF5E4;">Minhas coleções</a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="{{route("livros.index")}}">Livros</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="{{route("series.index")}}">Séries</a></li>
+                            </ul>
+                          </li>
                     </ul>
-    
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                    </form>
     
                     <div class="dropdown text-end">
                         <a href="#" class="d-block text-decoration-none dropdown-toggle"
