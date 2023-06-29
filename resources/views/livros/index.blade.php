@@ -6,16 +6,25 @@
 
     <div class="container mt-5">
         <div class="row">
-            <div class="d-flex align-items-center">
-                <div class="col-5">
+            <div>
+                <div class="col-5 mb-4">
                     <a class="btn btn-outline-light me-md-2" href="{{route('livros.create')}}" role="button" style="color: #DB005B; border-color: #B70404;">Adicionar</a>
                 </div>
     
-                <div class="col-7 d-flex justify-content-end mt-2">
-                    <h6>Assistido - Atualizar - Excluir</h6>
+                <div class="d-flex align-items-center p-1 border border-secondary-subtle border-start-0 border-end-0">
+                    <div class="col-5 d-flex justify-content-start mt-2 ms-3" style="gap: 30px;">
+                        <h6>#</h6>
+                        <h6>Nome</h6>
+                    </div>
+
+                    <div class="col-5 d-flex justify-content-end mt-2" style="gap: 30px; margin-left: 12em">
+                        <h6>Marcar como lido</h6>
+                        <h6>Editar</h6>
+                        <h6>Excluir</h6>
+                    </div>
+
                 </div>
             </div>
-
 
             <div class="col-12">
 
@@ -26,11 +35,14 @@
                 @endisset
 
                 <form action="/livros" method="get">
-                    <ul class="list-group list-group-flush mt-3">
+                    <ul class="list-group list-group-numbered list-group-flush mt-3">
                         @foreach ($livros as $livro)
-                        <li class="list-group-item d-flex justify-content-between">
-                            {{ $livro->name }}
-                            <div class="d-flex align-items-center" style="gap: 45px">
+                        <li class="list-group-item d-flex align-items-center justify-content-between px-2" style="gap: 20px">
+                            <div class="ms-6">
+                                {{ $livro->name }}
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-start" style="gap: 50px;">
                                 <input class="form-check-input" type="checkbox" id="checkboxNoLabel">
 
                                 <a href="{{route('livros.edit', $livro->id)}}" class="btn btn-sm">
@@ -38,7 +50,7 @@
                                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                                     </svg>
-                                </a>    
+                                </a>
             
                                 <form action="{{route('livros.destroy', $livro->id)}}" method="post">
                                     @csrf
