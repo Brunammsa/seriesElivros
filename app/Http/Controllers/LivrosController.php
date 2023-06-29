@@ -24,7 +24,7 @@ class LivrosController extends Controller
     }
 
     public function store(LivrosFormRequest $request)
-    {
+    {   
         $livro = Livro::create($request->only(['name']));
 
         return to_route('livros.index')
@@ -43,7 +43,7 @@ class LivrosController extends Controller
         $livro->save();
 
         return to_route('livros.index')
-            ->with('success.message', "O livro '{$livro->name}' foi editado com sucesso");
+            ->with('success.message', "O livro '{$livro->name}' foi atualizado com sucesso");
     }
 
     public function destroy(Livro $livro)
