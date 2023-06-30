@@ -6,13 +6,21 @@
 
     <div class="container mt-5">
         <div class="row">
-            <div class="d-flex align-items-center">
-                <div class="col-5">
-                    <a class="btn btn-outline-light me-md-2" href="{{route('livros.create')}}" role="button" style="color: #DB005B; border-color: #B70404;">Adicionar</a>
+            <div>
+                <div class="col-5 mb-4">
+                    <a class="btn btn-outline-light me-md-2" href="{{route('series.create')}}" role="button" style="color: #DB005B; border-color: #B70404;">Adicionar</a>
                 </div>
-    
-                <div class="col-7 d-flex justify-content-end mt-2">
-                    <h6>Assistido - Atualizar - Excluir</h6>
+                <div class="d-flex align-items-center p-1 border border-secondary-subtle border-start-0 border-end-0">
+                    <div class="col-5 d-flex justify-content-start mt-2 ms-3" style="gap: 30px;">
+                        <h6>#</h6>
+                        <h6>Nome</h6>
+                    </div>
+
+                    <div class="col-5 d-flex justify-content-end mt-2" style="gap: 30px; margin-left: 12em">
+                        <h6>Marcar como lido</h6>
+                        <h6>Editar</h6>
+                        <h6>Excluir</h6>
+                    </div>
                 </div>
             </div>
             
@@ -25,14 +33,16 @@
                 @endisset
 
                 <form action="/series" method="get">
-                    <ul class="list-group list-group-flush mt-3">
+                    <ul class="list-group list-group-numbered list-group-flush mt-3">
                         @foreach ($series as $serie)
-                        <li class="list-group-item d-flex justify-content-between">
-                            {{ $serie->name }}
-                            
-                            <div class="d-flex align-items-center" style="gap: 45px">
+                        <li class="list-group-item d-flex align-items-center px-3" style="gap: 20px">
+                            <div class="me-auto p-2 bd-highlight">
+                                {{ $serie->name }}
+                            </div>       
+    
+                            <div class="d-flex align-items-center p-2 bd-highlight" style="gap: 45px">
                                 <input class="form-check-input" type="checkbox" id="checkboxNoLabel">
-
+    
                                 <a href="{{route('series.edit', $serie->id)}}" class="btn btn-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
                                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>

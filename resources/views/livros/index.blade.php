@@ -10,7 +10,6 @@
                 <div class="col-5 mb-4">
                     <a class="btn btn-outline-light me-md-2" href="{{route('livros.create')}}" role="button" style="color: #DB005B; border-color: #B70404;">Adicionar</a>
                 </div>
-    
                 <div class="d-flex align-items-center p-1 border border-secondary-subtle border-start-0 border-end-0">
                     <div class="col-5 d-flex justify-content-start mt-2 ms-3" style="gap: 30px;">
                         <h6>#</h6>
@@ -22,7 +21,6 @@
                         <h6>Editar</h6>
                         <h6>Excluir</h6>
                     </div>
-
                 </div>
             </div>
 
@@ -37,12 +35,12 @@
                 <form action="/livros" method="get">
                     <ul class="list-group list-group-numbered list-group-flush mt-3">
                         @foreach ($livros as $livro)
-                        <li class="list-group-item d-flex align-items-center justify-content-between px-2" style="gap: 20px">
-                            <div class="ms-6">
+                        <li class="list-group-item d-flex align-items-center px-3" style="gap: 20px">
+                            <div class="me-auto p-2 bd-highlight">
                                 {{ $livro->name }}
                             </div>
 
-                            <div class="d-flex align-items-center justify-content-start" style="gap: 50px;">
+                            <div class="d-flex align-items-center p-2 bd-highlight" style="gap: 45px;">
                                 <input class="form-check-input" type="checkbox" id="checkboxNoLabel">
 
                                 <a href="{{route('livros.edit', $livro->id)}}" class="btn btn-sm">
