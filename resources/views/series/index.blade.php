@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="col-5 d-flex justify-content-end mt-2" style="gap: 30px; margin-left: 12em">
-                        <h6>Marcar como lido</h6>
+                        <h6>Marcar como assistido</h6>
                         <h6>Editar</h6>
                         <h6>Excluir</h6>
                     </div>
@@ -41,7 +41,21 @@
                             </div>       
     
                             <div class="d-flex align-items-center p-2 bd-highlight" style="gap: 45px">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel">
+                                <input class="form-check-input" type="checkbox" id="myCheck{{ $serie->id }}" {{ $serie->watched ? 'checked' : '' }} onclick="marcarComoLido()">
+                                <p id="text" style="display:none">Checkbox is CHECKED!</p>
+
+                                <script type="text/javascript">
+                                    function marcarComoLido(){
+                                        var checkBox = document.getElementById("myCheck_");
+
+                                        if (checkBox.checked == true){
+                                            text.style.display = "block";
+                                        } else {
+                                            text.style.display = "none";
+                                        }
+
+                                    }
+                                </script>
     
                                 <a href="{{route('series.edit', $serie->id)}}" class="btn btn-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
