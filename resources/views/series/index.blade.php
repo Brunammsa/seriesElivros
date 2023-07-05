@@ -65,12 +65,18 @@
     </div>
 
     <script>
-        let checkbox = document.getElementsByClassName("checkbox");
-        checkbox.addEventListener('click', marcarComoLido);
-
-        function marcarComoLido(){
-            alert('checkbox ativo, caraiii!!!');
+        let checkboxes = document.getElementsByClassName('checkbox');
+    
+        function marcarComoLido(serieId) {
+            alert(`Checkbox do livro com ID ${serieId} foi clicado`);
         }
+
+        for (let checkbox of checkboxes) {
+            checkbox.addEventListener('click', function() {
+                marcarComoLido(this.id);
+            });
+        }
+    
     </script>
 
 </x-app-layout>
