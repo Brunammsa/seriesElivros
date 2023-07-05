@@ -8,14 +8,6 @@
         <title>{{ config('app.name', 'Séries&Livros') }}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset("build/assets/icon6-96.ico")}}">
         @vite(['resources/scss/app.scss', 'resources/js/app.js'])
-
-        <style>
-            body {
-                background-image: url('public/plano-fundo1.jpg');
-                background-size: cover;
-                background-repeat: no-repeat;
-            }
-        </style>
         
     </head>
     <body class="antialiased">
