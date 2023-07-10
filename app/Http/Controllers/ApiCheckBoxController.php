@@ -11,16 +11,15 @@ class ApiCheckBoxController extends Controller
     {
         $isDone = $serie->read;
 
-        if ($isDone) {
-            $serie->read = false;
-            $serie->save();
+        $text = 'marcado com sucesso'; 
 
-            return response('Marcado com sucesso', 200);
+        if ($isDone) {
+            $text = 'desmarcado com sucesso';
         };
 
-        $serie->read = true;
+        $serie->read = !$serie->read;
         $serie->save();
-
-        return response('Desmarcado com sucesso', 200);
+        
+        return response($text, 200);
     }
 }
