@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::controller(ApiCheckBoxController::class)->group(function(){
-    Route::put('/api/toggle/{id}/toggle-done', 'toggle');
+    Route::post('toggle/{serie}/toggle-done', 'toggle');
 });
