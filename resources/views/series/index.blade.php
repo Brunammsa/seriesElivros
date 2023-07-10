@@ -40,7 +40,11 @@
                         </div>       
 
                         <div class="d-flex align-items-center p-2 bd-highlight" style="gap: 45px">
-                            <input class="checkbox" type="checkbox" id="{{ $serie->id }}">
+                            <input class="checkbox" type="checkbox" id="{{ $serie->id }}"
+                            @if ($serie->read)
+                                checked
+                            @endif
+                            >
 
                             <a href="{{route('series.edit', $serie->id)}}" class="btn btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
@@ -68,7 +72,7 @@
         for (let checkbox of checkboxes) {
             checkbox.addEventListener('click', function() {
                 fetch(`/api/toggle/${this.id}/toggle-done`, {
-                    method:'put'
+                    method:'post'
                 }).then(response => {
                     if (!response.ok) {
                         throw new Error('Erro na solicitação');
