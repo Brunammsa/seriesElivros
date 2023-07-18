@@ -1,4 +1,8 @@
-<x-app-layout title="Temporadas">
+<x-app-layout>
+    <div class="container d-flex justify-content-between">
+        <h2 class="mt-5">Temporadas</h2>
+        <h2 class="mt-5">Episódios</h2>
+    </div>
     <div class="container mt-5">
         <ul class="list-group list-group-flush">
             @foreach ($temporadas as $temporada)
