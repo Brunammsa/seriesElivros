@@ -29,7 +29,6 @@ class SeriesController extends Controller
     {
         $serie = Serie::create($request->only(['name']));
         $temporada = [];
-
         for ($i = 1; $i <= $request->qntTemp; $i++) {
             $temporada[] = [
                 'series_id' => $serie->id,
@@ -75,6 +74,34 @@ class SeriesController extends Controller
     {
         $serie->fill($request->all());
         $serie->save();
+        
+        $serie->temporadas()->delete();
+        
+        $temporadas = [];
+
+        for ($i = 1; $i <= $request->qntTemp; $i++) {
+            $temporadas[] = [
+                'series_id' => $serie->id,
+                'numero' => $i,
+            ];
+        }
+        
+        Temporadas::insert($temporadas);
+        $serie->refresh();
+
+        $episodios = [];
+
+        foreach ($serie->temporadas as $temporada) {
+            for ($j = 1; $j <= $request->qntEps; $j++) {
+
+                $episodios[] = [
+                    'temporadas_id' => $temporada->id,
+                    'numero' => $j,
+                ];
+            }
+        };
+
+        Episodios::insert($episodios);
 
         return to_route('series.index')
             ->with('success.message', "A série '{$serie->name}' foi editada com sucesso");
