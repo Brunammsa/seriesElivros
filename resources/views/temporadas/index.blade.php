@@ -10,11 +10,12 @@
                 <div class="me-auto p-2 bd-highlight">
                     {{ $temporada->numero }}
                 </div>
-                <span class="badge bg-secundary">
-                   {{ $temporada->episodios->count() }}
+                <span class="badge bg-secondary">
+                    {{ $temporada->episodios->count() }}
                 </span>
             </li>
             @endforeach
         </ul>
     </div>
+    
 </x-app-layout>
