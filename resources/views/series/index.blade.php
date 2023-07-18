@@ -36,8 +36,8 @@
                     @foreach ($series as $serie)
                     <li class="list-group-item d-flex align-items-center px-3" style="gap: 20px">
                         <div class="me-auto p-2 bd-highlight">
-                            {{ $serie->name }}
-                        </div>       
+                            <a href="{{route('temporadas.index', $serie->id)}}">{{ $serie->name }}</a>
+                        </div>
 
                         <div class="d-flex align-items-center p-2 bd-highlight" style="gap: 45px">
                             <input class="checkbox" type="checkbox" id="{{ $serie->id }}"
