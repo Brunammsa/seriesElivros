@@ -10,7 +10,7 @@ class LivrosController extends Controller
 {
     public function index(): View
     {
-        $livros = Livro::query()->orderBy('name')->get();
+        $livros = Livro::all();
         $successMessage = session('success.message');
 
         return view('livros.index')
