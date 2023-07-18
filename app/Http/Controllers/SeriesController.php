@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
+use App\Models\Episodios;
 use App\Models\Serie;
+use App\Models\Temporadas;
 use Illuminate\Contracts\View\View;
 
 class SeriesController extends Controller
 {
     public function index(): View
     {
-        $series = Serie::query()->orderBy('name')->get();
+        $series = Serie::all();
         $successMessage = session('success.message');
 
         return view('series.index')
@@ -26,6 +28,30 @@ class SeriesController extends Controller
     public function store(SeriesFormRequest $request)
     {
         $serie = Serie::create($request->only(['name']));
+        $temporada = [];
+
+        for ($i = 1; $i <= $request->qntTemp; $i++) {
+            $temporada[] = [
+                'series_id' => $serie->id,
+                'numero' => $i,
+            ];
+        }
+        
+        Temporadas::insert($temporada);
+
+        $episodios = [];
+
+        foreach ($serie->temporadas as $temporada) {
+            for ($j = 1; $j <= $request->qntEps; $j++) {
+
+                $episodios[] = [
+                    'temporadas_id' => $temporada->id,
+                    'numero' => $j,
+                ];
+            }
+        };
+
+        Episodios::insert($episodios);
 
         return to_route('series.index')
             ->with('success.message', "A série '{$serie->name}' foi adicionada com sucesso");
