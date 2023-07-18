@@ -11,7 +11,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\LivrosController;
-
+use App\Http\Controllers\TemporadasController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -78,5 +78,9 @@ Route::middleware('auth')->group(function () {
         Route::delete('/livros/destroy/{livro}', 'destroy')->whereNumber('livro')->name('livros.destroy');
         Route::get('livros/edit/{livro}', 'edit')->name('livros.edit');
         Route::put('livros/update/{livro}', 'update')->name('livros.update');
+    });
+
+    Route::controller(TemporadasController::class)->group(function (){
+        Route::get('/series/{series}/temporadas', 'index')->name('temporadas.index');
     });
 });
