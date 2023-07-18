@@ -6,13 +6,11 @@ use App\Models\Serie;
 
 class TemporadasController extends Controller
 {
-    public function index(int $series)
+    public function index(Serie $serie, int $id)
     {
-        $temporadas = Serie::query()
-        ->with('episodios')
-        ->where('series_id', $series)
-        ->get();
+        $temporadas = Serie::find($id)->temporadas;
+        // $temporadas = $serie->temporadas()->with('episodios')->get();
 
-        return view('temporadas.index')->with('temporadas', $temporadas);
+        return view('temporadas.index')->with('temporadas', $temporadas)->with('serie', $serie);
     }
 }
