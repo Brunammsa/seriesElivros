@@ -7,6 +7,7 @@ use App\Models\Episodios;
 use App\Models\Serie;
 use App\Models\Temporadas;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\DB;
 
 class SeriesController extends Controller
 {
@@ -27,6 +28,7 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request)
     {
+        DB::beginTransaction();
         $serie = Serie::create($request->only(['name']));
         $temporada = [];
         for ($i = 1; $i <= $request->qntTemp; $i++) {
@@ -51,7 +53,7 @@ class SeriesController extends Controller
         };
 
         Episodios::insert($episodios);
-
+        DB::commit();
         return to_route('series.index')
             ->with('success.message', "A série '{$serie->name}' foi adicionada com sucesso");
     }
@@ -72,6 +74,7 @@ class SeriesController extends Controller
 
     public function update(Serie $serie, SeriesFormRequest $request)
     {
+        DB::beginTransaction();
         $serie->fill($request->all());
         $serie->save();
         
@@ -102,6 +105,7 @@ class SeriesController extends Controller
         };
 
         Episodios::insert($episodios);
+        DB::commit();
 
         return to_route('series.index')
             ->with('success.message', "A série '{$serie->name}' foi editada com sucesso");
