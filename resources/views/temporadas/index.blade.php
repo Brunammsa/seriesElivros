@@ -8,7 +8,9 @@
             @foreach ($temporadas as $temporada)
             <li class="list-group-item d-flex align-items-center">
                 <div class="me-auto p-2 bd-highlight">
-                    {{ $temporada->numero }}
+                    <a href="{{route('episodios.index', $temporada->id)}}">
+                        {{ $temporada->numero }}
+                    </a>
                 </div>
                 <span class="badge bg-secondary">
                     {{ $temporada->episodios->count() }}
