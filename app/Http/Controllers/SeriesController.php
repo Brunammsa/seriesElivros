@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
-use App\Models\Episodios;
 use App\Models\Serie;
-use App\Models\Temporadas;
+use App\Repositories\SeriesRepositoryInterface;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\DB;
 
 class SeriesController extends Controller
 {
+    public function __construct(private SeriesRepositoryInterface $reporitory)
+    {
+    }
     public function index(): View
     {
         $series = Serie::all();
@@ -28,32 +29,8 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request)
     {
-        DB::beginTransaction();
-        $serie = Serie::create($request->only(['name']));
-        $temporada = [];
-        for ($i = 1; $i <= $request->qntTemp; $i++) {
-            $temporada[] = [
-                'series_id' => $serie->id,
-                'numero' => $i,
-            ];
-        }
-        
-        Temporadas::insert($temporada);
+        $serie = $this->reporitory->add($request);
 
-        $episodios = [];
-
-        foreach ($serie->temporadas as $temporada) {
-            for ($j = 1; $j <= $request->qntEps; $j++) {
-
-                $episodios[] = [
-                    'temporadas_id' => $temporada->id,
-                    'numero' => $j,
-                ];
-            }
-        };
-
-        Episodios::insert($episodios);
-        DB::commit();
         return to_route('series.index')
             ->with('success.message', "A série '{$serie->name}' foi adicionada com sucesso");
     }
@@ -74,38 +51,7 @@ class SeriesController extends Controller
 
     public function update(Serie $serie, SeriesFormRequest $request)
     {
-        DB::beginTransaction();
-        $serie->fill($request->all());
-        $serie->save();
-        
-        $serie->temporadas()->delete();
-        
-        $temporadas = [];
-
-        for ($i = 1; $i <= $request->qntTemp; $i++) {
-            $temporadas[] = [
-                'series_id' => $serie->id,
-                'numero' => $i,
-            ];
-        }
-        
-        Temporadas::insert($temporadas);
-        $serie->refresh();
-
-        $episodios = [];
-
-        foreach ($serie->temporadas as $temporada) {
-            for ($j = 1; $j <= $request->qntEps; $j++) {
-
-                $episodios[] = [
-                    'temporadas_id' => $temporada->id,
-                    'numero' => $j,
-                ];
-            }
-        };
-
-        Episodios::insert($episodios);
-        DB::commit();
+        $serie = $this->reporitory->update($serie, $request);
 
         return to_route('series.index')
             ->with('success.message', "A série '{$serie->name}' foi editada com sucesso");
