@@ -12,6 +12,8 @@ class Episodios extends Model
         'numero'
     ];
     
+    protected $casts = ['watched' => 'boolean'];
+
     public $timestamps = false;
 
     public function temporadas()
