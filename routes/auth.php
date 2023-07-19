@@ -9,9 +9,11 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\EpisodiosController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\LivrosController;
 use App\Http\Controllers\TemporadasController;
+use App\Models\Temporadas;
 use Illuminate\Support\Facades\Route;
 
 
@@ -83,4 +85,10 @@ Route::middleware('auth')->group(function () {
     Route::controller(TemporadasController::class)->group(function (){
         Route::get('/series/{series}/temporadas', 'index')->name('temporadas.index');
     });
+
+    Route::get('/temporadas/{temporada}/episodios', [EpisodiosController::class, 'index'])
+        ->name('episodios.index');
+
+    Route::post('/temporadas/{temporada}/episodios', [EpisodiosController::class, 'update'])
+        ->name('episodios.index');
 });
