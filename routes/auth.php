@@ -13,7 +13,6 @@ use App\Http\Controllers\EpisodiosController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\LivrosController;
 use App\Http\Controllers\TemporadasController;
-use App\Models\Temporadas;
 use Illuminate\Support\Facades\Route;
 
 
