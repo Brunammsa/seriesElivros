@@ -21,4 +21,9 @@ class Temporadas extends Model
     {
         return $this->hasMany(Episodios::class);
     }
+
+    public function numeroAssistidos(): int
+    {
+        return $this->episodios->filter(fn ($episodio)=>$episodio->watched)->count();
+    }
 }
