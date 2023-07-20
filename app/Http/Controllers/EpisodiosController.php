@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Episodios;
 use App\Models\Temporadas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EpisodiosController extends Controller
 {
@@ -21,11 +21,17 @@ class EpisodiosController extends Controller
     {
         $episodioAssistido = $request->episodio;
 
-        $temporada->episodios->each(function (Episodios $episodio) use ($episodioAssistido) {
-            $episodio->watched = in_array($episodio->id, $episodioAssistido);
+        DB::transaction(function() use ($episodioAssistido) {
+            DB::table('episodios')->whereIn('id',$episodioAssistido)->update(['watched' => true]);
+            DB::table('episodios')->whereNotIn('id',$episodioAssistido)->update(['watched' => false]);
+
         });
 
-        $temporada->push();
+        // $temporada->episodios->each(function (Episodios $episodio) use ($episodioAssistido) {
+        //     $episodio->watched = in_array($episodio->id, $episodioAssistido);
+        // });
+
+        // $temporada->push();
 
         return to_route('episodios.index', $temporada->id);
     }
