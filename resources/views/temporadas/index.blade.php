@@ -13,7 +13,7 @@
                     </a>
                 </div>
                 <span class="badge bg-secondary">
-                    {{ $temporada->episodios->count() }}
+                    {{ $temporada->numeroAssistidos()}}/{{ $temporada->episodios->count() }}
                 </span>
             </li>
             @endforeach
