@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
+use App\Mail\SeriesCreated;
 use App\Models\Serie;
 use App\Repositories\SeriesRepositoryInterface;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Mail;
 
 class SeriesController extends Controller
 {
@@ -30,6 +32,10 @@ class SeriesController extends Controller
     public function store(SeriesFormRequest $request)
     {
         $serie = $this->reporitory->add($request);
+
+        $email = new SeriesCreated($serie->name, $serie->id, $request->qntTemp, $request->qntEps);
+
+        Mail::to($request->user())->send($email);
 
         return to_route('series.index')
             ->with('success.message', "A série '{$serie->name}' foi adicionada com sucesso");
