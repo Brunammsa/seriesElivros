@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SeriesCreated as EventsSeriesCreated;
 use App\Http\Requests\SeriesFormRequest;
 use App\Mail\SeriesCreated;
 use App\Models\Serie;
@@ -33,10 +34,13 @@ class SeriesController extends Controller
     {
         $serie = $this->reporitory->add($request);
 
-        $email = new SeriesCreated($serie->name, $serie->id, $request->qntTemp, $request->qntEps);
-
-        Mail::to($request->user())->send($email);
-
+        EventsSeriesCreated::dispatch(
+            $serie->name,
+            $serie->id,
+            $request->qntTemp,
+            $request->qntEps,
+        );
+        
         return to_route('series.index')
             ->with('success.message', "A série '{$serie->name}' foi adicionada com sucesso");
     }
