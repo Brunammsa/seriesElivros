@@ -4,10 +4,12 @@
             <h1>Temporadas de '{{$serie->name}}'</h1>
         </div>
         <div class="d-flex justify-content-center">
-            <img src="{{asset('storage/' . $serie->cover )}}" 
+            @isset($serie->cover)
+                <img src="{{asset('storage/' . $serie->cover )}}" 
                 alt="capa da série" 
                 class=" img-fluid" 
                 style="height: 400px">
+            @endisset
         </div>
     </div>
     <div class="container d-flex justify-content-between">
