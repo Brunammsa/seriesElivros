@@ -13,7 +13,11 @@ class EloquentSeriesRepository implements SeriesRepositoryInterface
     public function add(SeriesFormRequest $request): Serie
     {
         return DB::transaction(function () use ($request) {
-            $serie = Serie::create($request->only(['name']));
+            $serie = Serie::create([
+                'name' => $request->name,
+                'cover' => $request->coverPath,
+            ]);
+
             $temporada = [];
             for ($i = 1; $i <= $request->qntTemp; $i++) {
                 $temporada[] = [
