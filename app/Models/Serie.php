@@ -10,7 +10,7 @@ class Serie extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'read'];
+    protected $fillable = ['name', 'read', 'cover'];
     protected $with = ['temporadas'];
 
 
