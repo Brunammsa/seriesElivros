@@ -22,7 +22,8 @@ class SeriesFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'min:3']
+            'name' => ['required', 'min:3'],
+            'cover' => 'mimes:png,jpg,gif'
         ];
     }
 }
