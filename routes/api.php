@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\ApiSeriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiCheckBoxController;
+use App\Http\Controllers\Api\ApiUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,6 @@ Route::controller(ApiCheckBoxController::class)->group(function(){
     Route::post('toggle/{serie}/toggle-done', 'toggle');
 });
 
-Route::get('/series', [ApiSeriesController::class, 'index']);
+Route::apiResource('/series', ApiSeriesController::class);
+
+Route::post('/upload', [ApiUploadController::class, 'upload']);
