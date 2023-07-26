@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\ApiSeriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ApiCheckBoxController;
+use App\Http\Controllers\Api\ApiCheckBoxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(ApiCheckBoxController::class)->group(function(){
     Route::post('toggle/{serie}/toggle-done', 'toggle');
 });
+
+Route::get('/series', [ApiSeriesController::class, 'index']);
