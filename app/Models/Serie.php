@@ -9,14 +9,16 @@ use Illuminate\Database\Eloquent\Model;
 class Serie extends Model
 {
     use HasFactory;
-
     protected $fillable = ['name', 'read', 'cover'];
-    protected $with = ['temporadas'];
-
 
     public function temporadas()
     {
         return $this->hasMany(Temporadas::class, 'series_id');
+    }
+
+    public function episodios()
+    {
+        return $this->hasManyThrough(Episodios::class, Temporadas::class, 'series_id', 'temporadas_id');
     }
 
     protected static function booted()
