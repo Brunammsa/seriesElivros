@@ -9,12 +9,10 @@ class ApiUploadController extends Controller
 {
     public function upload(Request $request)
     {
-        $path = $request;
-        dd($path);
         $hasFile = $request->hasFile('file');
 
         if ($hasFile) {
-            $coverPath = $request->file('file')->store($path, 'public');
+            $coverPath = $request->file('file')->store('series_cover', 'public');
         } else {
             $coverPath = null;
         }
