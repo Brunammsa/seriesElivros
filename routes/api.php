@@ -4,6 +4,8 @@ use App\Http\Controllers\Api\ApiSeriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiCheckBoxController;
+use App\Http\Controllers\Api\ApiTemporadasController;
+use App\Http\Controllers\Api\ApiEpisodiosController;
 use App\Http\Controllers\Api\ApiUploadController;
 
 /*
@@ -28,3 +30,9 @@ Route::controller(ApiCheckBoxController::class)->group(function(){
 Route::apiResource('/series', ApiSeriesController::class);
 
 Route::post('/upload', [ApiUploadController::class, 'upload']);
+Route::get('/series/{serie}/temporadas', [ApiTemporadasController::class, 'show']);
+
+Route::get('/series/{serie}/episodios', [ApiEpisodiosController::class, 'show']);
+
+Route::patch('episodios/{episodio}', [ApiEpisodiosController::class, 'update']);
+
