@@ -6,15 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Serie;
 use App\Repositories\SeriesRepositoryInterface;
+use Illuminate\Http\Request;
 
 class ApiSeriesController extends Controller
 {
     public function __construct(private SeriesRepositoryInterface $seriesRepository)
     {
     }
-    public function index()
+    public function index(Request $request)
     {
-        return Serie::all();
+        $query = Serie::query();
+        if ($request->has('name')) {
+            $query->where('name', $request->name);
+        }
+
+        return $query->paginate(2);
     }
 
     public function store(SeriesFormRequest $request)
