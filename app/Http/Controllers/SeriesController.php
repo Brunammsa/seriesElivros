@@ -49,7 +49,10 @@ class SeriesController extends Controller
             $request->qntTemp,
             $request->qntEps,
         );
-        
+
+        $user = auth()->user();
+        $user->series()->attach($serie->id);
+
         return to_route('series.index')
             ->with('success.message', "A série '{$serie->name}' foi adicionada com sucesso");
     }
