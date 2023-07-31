@@ -8,6 +8,7 @@ use App\Jobs\DeleteSerieCover;
 use App\Models\Serie;
 use App\Repositories\SeriesRepositoryInterface;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class SeriesController extends Controller
 {
@@ -16,7 +17,9 @@ class SeriesController extends Controller
     }
     public function index(): View
     {
-        $series = Serie::all();
+        $user = Auth::user();
+        $series = $user->series;
+
         $successMessage = session('success.message');
 
         return view('series.index')
