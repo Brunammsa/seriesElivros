@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('episodios', function (Blueprint $table) {
+        Schema::create('series_users', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('series_id')->constrained('series');
+            $table->foreignId('users_id')->constrained('users');
             $table->boolean('read')->default(false);
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('episodios', function (Blueprint $table) {
-            $table->dropColumn('read');
-        });
+        Schema::dropIfExists('series_users');
     }
 };
