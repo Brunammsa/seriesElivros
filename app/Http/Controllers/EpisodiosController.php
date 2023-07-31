@@ -22,13 +22,13 @@ class EpisodiosController extends Controller
         $episodioAssistido = $request->episodio;
 
         DB::transaction(function() use ($episodioAssistido) {
-            DB::table('episodios')->whereIn('id',$episodioAssistido)->update(['watched' => true]);
-            DB::table('episodios')->whereNotIn('id',$episodioAssistido)->update(['watched' => false]);
+            DB::table('episodios')->whereIn('id',$episodioAssistido)->update(['read' => true]);
+            DB::table('episodios')->whereNotIn('id',$episodioAssistido)->update(['read' => false]);
 
         });
 
         // $temporada->episodios->each(function (Episodios $episodio) use ($episodioAssistido) {
-        //     $episodio->watched = in_array($episodio->id, $episodioAssistido);
+        //     $episodio->read = in_array($episodio->id, $episodioAssistido);
         // });
 
         // $temporada->push();

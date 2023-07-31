@@ -14,7 +14,7 @@
                     <input type="checkbox" class="checkbox" 
                         name="episodio[]" 
                         value="{{$episodio->id}}"
-                        @if ($episodio->watched)
+                        @if ($episodio->read)
                             checked
                         @endif>
                 </li>

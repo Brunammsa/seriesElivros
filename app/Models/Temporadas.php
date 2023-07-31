@@ -24,6 +24,6 @@ class Temporadas extends Model
 
     public function numeroAssistidos(): int
     {
-        return $this->episodios->filter(fn ($episodio)=>$episodio->watched)->count();
+        return $this->episodios->filter(fn ($episodio)=>$episodio->read)->count();
     }
 }

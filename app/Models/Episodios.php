@@ -10,10 +10,10 @@ class Episodios extends Model
     use HasFactory;
     protected $fillable = [
         'numero',
-        'watched'
+        'read'
     ];
     
-    protected $casts = ['watched' => 'boolean'];
+    protected $casts = ['read' => 'boolean'];
 
     public $timestamps = false;
 

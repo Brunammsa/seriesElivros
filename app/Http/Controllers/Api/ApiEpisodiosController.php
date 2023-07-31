@@ -16,7 +16,7 @@ class ApiEpisodiosController extends Controller
 
     public function update(Episodios $episodio, Request $request)
     {
-        $episodio->watched = $request->watched;
+        $episodio->read = $request->read;
         $episodio->save();
 
         return $episodio;
