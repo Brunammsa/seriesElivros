@@ -18,4 +18,9 @@ class Livro extends Model
             $querybuilder->orderBy('name');
         });
     }
+
+    public function usuarios()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
