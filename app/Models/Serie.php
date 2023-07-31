@@ -13,6 +13,10 @@ class Serie extends Model
     protected $fillable = ['name', 'read', 'cover'];
     protected $appends = ['links'];
 
+    public function usuarios()
+    {
+        return $this->belongsToMany(User::class, 'series_users', 'series_id', 'users_id');
+    }
 
     public function temporadas()
     {
